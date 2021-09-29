@@ -16,7 +16,6 @@ import { AccountComponent } from "../account/account.component";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { CustomerService } from "../../../service/customer.service";
 import { Customer } from "../../../model/customer.model";
-import { debug } from "console";
 
 @Component({
   templateUrl: "./invoice-create.component.html",
