@@ -1,0 +1,86 @@
+<div class="animated fadeIn">
+
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header bg-success">
+            <i class="fa fa-plus"></i> Nueva Order 
+  
+            <label for="">Cliente: {{customer.name}} {{customer.lastName}}</label>
+          </div>
+          <div class="card-body">
+            <div class="col-lg-12">
+              <div class="text-right">
+                <button class="btn btn-info" (click)='save()'><i class="fa fa-save"></i>
+                 Facturar</button>
+                 <button class="btn btn-info" (click)='changeCustomer()'><i class="fa fa-refresh"></i>
+                  Cambiar Cliente</button>
+              </div>
+            </div>
+            <div class="row">
+              <label class="text-danger">(*) Campos Requerido</label>
+            </div>
+  <div>
+   
+  </div>
+              <div class="row">
+                <div *ngFor='let item of products'>
+                    <img height="150" width="150" src="https://1.bp.blogspot.com/-79DdxzZkDog/T76QV6v5IuI/AAAAAAAAAEY/6DzpGZzsmfA/s320/homerocatolico_456_336.jpg">
+               <div>
+                <div class='col-md-12'>
+                   {{item.name}}
+   
+                     </div>
+               <div class='col-md-12'>
+               Precio: {{item.price}}, Disponibles: {{item.stock}}
+
+                  </div>
+                  <div class="col-md-10">
+                    <div class="input-prepend input-group">
+                   
+                      <input  [(ngModel)]=item.quantity type="number" (keydown.enter)='addToList(item)'  class="form-control">
+                     
+                      <span class="input-group-append">
+                        <button (click)='addToList(item)' class="btn btn-primary"><i class="fa fa-shopping-cart"></i></button>
+                      </span>
+                    </div>
+                  </div>
+               </div>
+              </div>
+            </div>
+            <div class="row" *ngIf='detail.length>0'>
+            
+              <div class="col-md-6" >
+                <h4 class="text-success">Total Items: 
+                {{detail.length}}</h4>
+              </div>
+              <div class="col-md-6">
+                <h4 class="text-success">Total $: 
+                  {{total}}</h4>
+              </div>
+            </div>
+            <table class="table table-hover" id='no-more-tables'>
+              <thead class="cf">
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Total</th>
+                <th>Acciones</th>
+              </thead>
+              <tbody>
+                <tr *ngFor='let item of detail'>
+                  <td>{{item.product.name}}</td>
+                  <td>{{item.quantity}}</td>
+                  <td>{{item.salesPrice | currency}}</td>
+                  <td>{{item.total | currency}}</td>
+                  <td><button (click)=deleteItem(item.id) class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+      <!--/.col-->
+    </div>
+    <!--/.row-->
+  </div>
